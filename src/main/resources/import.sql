@@ -9,3 +9,10 @@ INSERT INTO tb_library (uuid, image_url, title, short_description, long_descript
 INSERT INTO tb_library (uuid, image_url, title, short_description, long_description, publisher) VALUES ('ed279d29-277c-4540-b19f-6b22713a22bb','http://imagemdolivroaqui.dominio','Carta ao pai','Short description','Long description','publisher book 9');
 INSERT INTO tb_library (uuid, image_url, title, short_description, long_description, publisher) VALUES ('d7e9790d-8d70-45b6-9044-9094cca60575','http://imagemdolivroaqui.dominio','A Metamorfose','Short description','Long description','publisher book 10');
 
+INSERT INTO tb_list_book (name) VALUES ('Ficcao');
+INSERT INTO tb_list_book (name) VALUES ('Literatura');
+
+INSERT INTO tb_belonging (list_id, library_id, index) VALUES (2, '8931609e-0880-4dc7-9519-c4fec86a04ae', 0)
+INSERT INTO tb_belonging (list_id, library_id, index) VALUES (2, '246f4cc0-9fda-43d8-b9f0-9f58a8b46730', 1)
+INSERT INTO tb_belonging (list_id, library_id, index) VALUES (1, 'ed279d29-277c-4540-b19f-6b22713a22bb', 2)
+INSERT INTO tb_belonging (list_id, library_id, index) VALUES (1, '35f67997-0b52-488f-ab94-49babb6d8eb4', 3)
