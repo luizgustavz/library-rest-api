@@ -6,13 +6,16 @@ import com.luizgustavz.library.dto.library.response.LibraryByIdShortDescriptionD
 import com.luizgustavz.library.dto.library.response.LibraryFindAllLongDescriptionDto;
 import com.luizgustavz.library.dto.library.response.LibraryFindAllShortDescriptionDto;
 import com.luizgustavz.library.services.library.LibraryService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/library")
+@RequestMapping(value = "/api/v1/library",  produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 public class LibraryController {
 
     private final LibraryService service;
@@ -21,36 +24,38 @@ public class LibraryController {
     }
 
     @PostMapping("/save")
-    public LibrarySaveLongDescriptionDto save(@RequestBody LibrarySaveLongDescriptionDto librarySave){
-        return service.save(librarySave);
+    public ResponseEntity<LibrarySaveLongDescriptionDto> save(@RequestBody LibrarySaveLongDescriptionDto librarySave){
+        return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(service.save(librarySave));
     }
 
     @GetMapping("/list/short")
-    public List<LibraryFindAllShortDescriptionDto> findAllShortDescription(){
-        return service.findAllShortDescription();
+    public ResponseEntity<List<LibraryFindAllShortDescriptionDto>> findAllShortDescription(){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(service.findAllShortDescription());
     }
 
     @GetMapping("/list/short/{uuid}")
-    public LibraryByIdShortDescriptionDto findByIdShortDescription(@PathVariable UUID uuid){
-        return service.findByIdShortDescription(uuid);
+    public ResponseEntity<LibraryByIdShortDescriptionDto> findByIdShortDescription(@PathVariable UUID uuid){
+        return ResponseEntity.status(HttpStatus.OK)
+                        .body(service.findByIdShortDescription(uuid));
     }
 
     @GetMapping("/list/long")
-    public List<LibraryFindAllLongDescriptionDto> findAllLongDescription(){
-        return service.findAllLongDescription();
+    public ResponseEntity<List<LibraryFindAllLongDescriptionDto>> findAllLongDescription(){
+        return ResponseEntity.status(HttpStatus.OK)
+                        .body(service.findAllLongDescription());
     }
 
     @GetMapping("/list/long/{uuid}")
-    public LibraryByIdLongDescriptionDto findByIdLongDescription(@PathVariable UUID uuid){
-        return service.findByIdLongDescription(uuid);
+    public ResponseEntity<LibraryByIdLongDescriptionDto> findByIdLongDescription(@PathVariable UUID uuid){
+        return ResponseEntity.status(HttpStatus.OK)
+                        .body(service.findByIdLongDescription(uuid));
     }
 
     @DeleteMapping("/delete/{uuid}")
-    public void deleteById(@PathVariable UUID uuid){
+    public ResponseEntity<Void> deleteById(@PathVariable UUID uuid){
         service.deleteById(uuid);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
-
-
-
 }
