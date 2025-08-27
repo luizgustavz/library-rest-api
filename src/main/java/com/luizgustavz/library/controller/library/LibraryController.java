@@ -41,6 +41,12 @@ public class LibraryController {
                         .body(service.findByIdShortDescription(uuid));
     }
 
+    @GetMapping("/list/short/t/{title}")
+    public ResponseEntity<List<LibraryFindAllShortDescriptionDto>> findByTitleShortDescription(@PathVariable String title){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(service.findAllByTitleShortDescription(title));
+    }
+
     @GetMapping("/list/long")
     public ResponseEntity<List<LibraryFindAllLongDescriptionDto>> findAllLongDescription(){
         return ResponseEntity.status(HttpStatus.OK)
@@ -51,6 +57,12 @@ public class LibraryController {
     public ResponseEntity<LibraryByIdLongDescriptionDto> findByIdLongDescription(@PathVariable UUID uuid){
         return ResponseEntity.status(HttpStatus.OK)
                         .body(service.findByIdLongDescription(uuid));
+    }
+
+    @GetMapping("/list/long/t/{title}")
+    public ResponseEntity<List<LibraryFindAllLongDescriptionDto>> findByTitleLongDescription(@PathVariable String title){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(service.findAllByTitleLongDescription(title));
     }
 
     @DeleteMapping("/delete/{uuid}")

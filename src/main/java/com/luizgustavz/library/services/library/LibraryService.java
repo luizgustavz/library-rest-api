@@ -6,7 +6,7 @@ import com.luizgustavz.library.dto.library.response.LibraryByIdShortDescriptionD
 import com.luizgustavz.library.dto.library.response.LibraryFindAllLongDescriptionDto;
 import com.luizgustavz.library.dto.library.response.LibraryFindAllShortDescriptionDto;
 import com.luizgustavz.library.mapper.LibraryMapper;
-import com.luizgustavz.library.repository.library.ILibraryRepository;
+import com.luizgustavz.library.model.repository.library.ILibraryRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,6 +63,15 @@ public class LibraryService {
         repository.deleteById(uuid);
     }
 
+    // FIND BY TITLE -> Method to find all librarys by title short descroiption using dtos.
+    public List<LibraryFindAllShortDescriptionDto> findAllByTitleShortDescription(String title){
+        return mapper.forLibraryQueryListAllByNameShortDescriptionDto(
+                repository.findByTitle(title));
+    }
 
-
+    // FIND BY TITLE -> Method to find all librarys by title long description using dtos.s
+    public List<LibraryFindAllLongDescriptionDto> findAllByTitleLongDescription(String title){
+        return mapper.forLibraryQueryListAllByNameLongDescriptionDto(
+                repository.findByTitle(title));
+    }
 }

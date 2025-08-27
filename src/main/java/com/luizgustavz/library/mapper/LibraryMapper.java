@@ -21,6 +21,14 @@ public interface LibraryMapper {
     // findAllShortDescription
     List<LibraryFindAllShortDescriptionDto> toLibraryFindAllShortDescriptionDtoList(List<Library> libraryShortList);
 
+    // findByIdShortDescription
+    LibraryByIdShortDescriptionDto forLibraryFindByIdShortDescriotionDto(Library library);
+    @Mapping(target = "longDescription", ignore = true)
+    Library forLibraryFindByIdShortDescription(LibraryByIdShortDescriptionDto libraryFindByIdShortDescriptionDto);
+
+    // queryListAllByNameShortDescription
+    List<LibraryFindAllShortDescriptionDto> forLibraryQueryListAllByNameShortDescriptionDto(List<Library> lib);
+
     // findAllLongDescription
     List<LibraryFindAllLongDescriptionDto> toLibraryFindAllLongDescriptionDtoList(List<Library> libraryLongList);
 
@@ -28,8 +36,8 @@ public interface LibraryMapper {
     LibraryByIdLongDescriptionDto forLibraryFindByIdLongDescriptionDto(Library library);
     Library forLibraryFindById(LibraryFindAllLongDescriptionDto libraryFindAllLongDescriptionDto);
 
-    // findByIdShortDescription
-    LibraryByIdShortDescriptionDto forLibraryFindByIdShortDescriotionDto(Library library);
-    Library forLibraryFindByIdShortDescription(LibraryByIdShortDescriptionDto libraryFindByIdShortDescriptionDto);
+    // queryListALlByNameLongDescription
+    List<LibraryFindAllLongDescriptionDto> forLibraryQueryListAllByNameLongDescriptionDto(List<Library> libraryList);
+
 
 }
