@@ -29,6 +29,12 @@ public class LibraryController {
                     .body(service.save(librarySave));
     }
 
+    @GetMapping("/list/all/c/title")
+    public ResponseEntity<List<LibraryFindAllLongDescriptionDto>> containingTitle(@RequestParam String title){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(service.containingTitle(title));
+    }
+
     @GetMapping("/list/short")
     public ResponseEntity<List<LibraryFindAllShortDescriptionDto>> findAllShortDescription(){
         return ResponseEntity.status(HttpStatus.OK)

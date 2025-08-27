@@ -13,6 +13,6 @@ public interface ILibraryRepository extends JpaRepository<Library, UUID> {
 
     List<Library> findByTitle(String title);
 
-
+    List<Library> findByTitleContaining(String title);
 
 }

@@ -74,4 +74,10 @@ public class LibraryService {
         return mapper.forLibraryQueryListAllByNameLongDescriptionDto(
                 repository.findByTitle(title));
     }
+
+    // FINF BY TITLE CONTAINING -> Method to find all librarys by title containing long description using dtos.
+    public List<LibraryFindAllLongDescriptionDto> containingTitle(String title){
+        return mapper.toLibraryFindAllLongDescriptionDtoList(
+                repository.findByTitleContaining(title));
+    }
 }
