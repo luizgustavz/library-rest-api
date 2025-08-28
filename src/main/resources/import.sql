@@ -1,5 +1,5 @@
 -- books fiction
-INSERT INTO tb_library (uuid, image_url, title, short_description, long_description, publisher) VALUES ('13537170-421f-4f89-952f-0f841130259a','http://imagemdolivroaqui.dominio','1984','Short description','Long description','publisher book 1');
+INSERT INTO tb_library (uuid, image_url, title, short_description, long_description, publisher) VALUES ('13537170-421f-4f89-952f-0f841130259a','http://imagemdolivroaqui.dominio','1984','Short description','Long description','Testando');
 INSERT INTO tb_library (uuid, image_url, title, short_description, long_description, publisher) VALUES ('d25fed4b-bca4-400b-a22d-38df350717bc','http://imagemdolivroaqui.dominio','Admiravel Mundo Novo','Short description','Long description','publisher book 2');
 INSERT INTO tb_library (uuid, image_url, title, short_description, long_description, publisher) VALUES ('f4acbfd4-ba45-402a-ac26-d29b0bb6cea8','http://imagemdolivroaqui.dominio','Fundacao','Short description','Long description','publisher book 3');
 INSERT INTO tb_library (uuid, image_url, title, short_description, long_description, publisher) VALUES ('d503d4f7-94c0-4c7d-942a-62f05bff2b0e','http://imagemdolivroaqui.dominio','Neuromancer','Short description','Long description','publisher book 4');
