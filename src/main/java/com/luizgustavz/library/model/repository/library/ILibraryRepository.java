@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -14,5 +15,8 @@ public interface ILibraryRepository extends JpaRepository<Library, UUID> {
     List<Library> findByTitle(String title);
 
     List<Library> findByTitleContaining(String title);
+
+    @Query("FROM Library WHERE publisher like %:publisher%")
+    Optional<Library> queryPublisher(String publisher);
 
 }

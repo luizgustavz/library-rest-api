@@ -10,6 +10,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper(componentModel = "spring")
 public interface LibraryMapper {
@@ -39,5 +40,8 @@ public interface LibraryMapper {
     // queryListALlByNameLongDescription
     List<LibraryFindAllLongDescriptionDto> forLibraryQueryListAllByNameLongDescriptionDto(List<Library> libraryList);
 
+    // queryPublisher
+    Library queryPublisher(LibraryFindAllLongDescriptionDto libraryFindAllLongDescriptionDto);
+    LibraryFindAllLongDescriptionDto forLibraryQueryPublisherDto(Library libraryOptional);
 
 }

@@ -6,11 +6,13 @@ import com.luizgustavz.library.dto.library.response.LibraryByIdShortDescriptionD
 import com.luizgustavz.library.dto.library.response.LibraryFindAllLongDescriptionDto;
 import com.luizgustavz.library.dto.library.response.LibraryFindAllShortDescriptionDto;
 import com.luizgustavz.library.mapper.LibraryMapper;
+import com.luizgustavz.library.model.entities.Library;
 import com.luizgustavz.library.model.repository.library.ILibraryRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -79,5 +81,11 @@ public class LibraryService {
     public List<LibraryFindAllLongDescriptionDto> containingTitle(String title){
         return mapper.toLibraryFindAllLongDescriptionDtoList(
                 repository.findByTitleContaining(title));
+    }
+
+    // FIND BY PUBLISHER -> Method to find a library by its publisher using a custom query.
+    public LibraryFindAllLongDescriptionDto queryPublisher(String publisher){
+        Optional<Library> libraryOptional = repository.queryPublisher(publisher);
+        return libraryOptional.map(mapper::forLibraryQueryPublisherDto).get();
     }
 }

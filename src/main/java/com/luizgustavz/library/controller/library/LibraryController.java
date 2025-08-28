@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -69,6 +70,12 @@ public class LibraryController {
     public ResponseEntity<List<LibraryFindAllLongDescriptionDto>> findByTitleLongDescription(@PathVariable String title){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(service.findAllByTitleLongDescription(title));
+    }
+
+    @GetMapping("/pub/q/publisher")
+    public ResponseEntity<LibraryFindAllLongDescriptionDto> queryPublisher(@RequestParam String publisher){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(service.queryPublisher(publisher));
     }
 
     @DeleteMapping("/delete/{uuid}")
